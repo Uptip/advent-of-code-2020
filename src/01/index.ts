@@ -1,6 +1,9 @@
-const loadFile = require('../utils').loadFile;
+import { loadFile } from '../utils';
 
-const answerOne = input => {
+export const formatInput = (input: string): Array<number> =>
+  input.split('\n').filter(Boolean).map(Number);
+
+export const partOne = (input: Array<number>): number => {
   for (let i = 0; i < input.length; i++) {
     const one = input[i];
     for (let j = i + 1; j < input.length; j++) {
@@ -12,7 +15,7 @@ const answerOne = input => {
   }
 };
 
-const answerTwo = input => {
+export const partTwo = (input: Array<number>): number => {
   for (let i = 0; i < input.length; i++) {
     const one = input[i];
     for (let j = i + 1; j < input.length; j++) {
@@ -28,7 +31,9 @@ const answerTwo = input => {
 };
 
 (async () => {
-  const input = await loadFile('01/input.txt');
-  console.log('1. Answer is ', answerOne(input));
-  console.log('2. Answer is ', answerTwo(input));
+  const fileContent = await loadFile('01/input.txt');
+  const input = formatInput(fileContent);
+
+  console.log('Answer one is', partOne(input));
+  console.log('Answer two is', partTwo(input));
 })();
