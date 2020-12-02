@@ -42,10 +42,24 @@ export const partTwo = (input: Array<any>): number =>
     );
   }).length;
 
-(async () => {
-  const fileContent = await loadFile('02/input.txt');
-  const input = formatInput(fileContent);
+if (process.env.NODE_ENV !== 'test') {
+  (async () => {
+    const fileContent = await loadFile('02/input.txt');
+    const input = formatInput(fileContent);
 
-  console.log('Answer one is', partOne(input));
-  console.log('Answer two is', partTwo(input));
-})();
+    console.time('Total time');
+
+    console.time('Part one time');
+    console.log('Answer one is', partOne(input));
+    console.timeEnd('Part one time');
+
+    console.log('—');
+
+    console.time('Part two time');
+    console.log('Answer two is', partTwo(input));
+    console.timeEnd('Part two time');
+
+    console.log('—');
+    console.timeEnd('Total time');
+  })();
+}
