@@ -2,8 +2,8 @@
 
 ## Completion
 
-[![Day 01](https://badgen.net/badge/01/%E2%98%85%E2%98%85/green)](https://github.com/Tip-/advent-of-code-20/tree/main/src/01)
-[![Day 02](https://badgen.net/badge/02/%E2%98%85%E2%98%85/green)](https://github.com/Tip-/advent-of-code-20/tree/main/src/02)
+[![Day 01](https://badgen.net/badge/01/%E2%98%85%E2%98%85/green)](https://github.com/Uptip/advent-of-code-20/tree/main/src/01)
+[![Day 02](https://badgen.net/badge/02/%E2%98%85%E2%98%85/green)](https://github.com/Uptip/advent-of-code-20/tree/main/src/02)
 ![Day 03](https://badgen.net/badge/03/%E2%98%86%E2%98%86/gray)
 ![Day 04](https://badgen.net/badge/04/%E2%98%86%E2%98%86/gray)
 ![Day 05](https://badgen.net/badge/05/%E2%98%86%E2%98%86/gray)
