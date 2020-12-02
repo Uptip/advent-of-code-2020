@@ -11,7 +11,6 @@ const __setMockFiles = newMockFiles => {
 };
 
 const readFile = pathToFile => {
-  console.log(pathToFile);
   return mockFiles[pathToFile];
 };
 
