@@ -1,4 +1,4 @@
-import { loadFile } from '../utils';
+import { loadFile } from '../utils/index';
 
 export const formatInput = (input: string): Array<number> =>
   input.split('\n').filter(Boolean).map(Number);

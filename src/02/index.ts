@@ -1,4 +1,4 @@
-import { loadFile } from '../utils';
+import { loadFile } from '../utils/index';
 
 type Entry = {
   digitOne: number;

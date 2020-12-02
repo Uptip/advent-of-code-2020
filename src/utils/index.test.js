@@ -14,7 +14,7 @@ const mockedContent = `1721
 
 describe('listFilesInDirectorySync', () => {
   const MOCK_FILE_INFO = {
-    [path.join(__dirname, '/path/to/file')]: mockedContent,
+    [path.join(__dirname, '..', '/path/to/file')]: mockedContent,
   };
 
   beforeEach(() => {
