@@ -42,6 +42,7 @@ export const partTwo = (input: Array<any>): number =>
     );
   }).length;
 
+/* istanbul ignore next */
 if (process.env.NODE_ENV !== 'test') {
   (async () => {
     const fileContent = await loadFile('02/input.txt');

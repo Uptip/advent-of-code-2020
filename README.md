@@ -1,5 +1,7 @@
 # 🎄 Advent of code 2020
 
+![check-code-coverage](https://img.shields.io/badge/code--coverage-92.68%25-brightgreen)
+
 ## Completion
 
 [![Day 01](https://badgen.net/badge/01/%E2%98%85%E2%98%85/green)](https://github.com/Uptip/advent-of-code-20/tree/main/src/01)

@@ -30,6 +30,7 @@ export const partTwo = (input: Array<number>): number => {
   }
 };
 
+/* istanbul ignore next */
 if (process.env.NODE_ENV !== 'test') {
   (async () => {
     const fileContent = await loadFile('01/input.txt');
