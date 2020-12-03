@@ -1,6 +1,7 @@
 import { loadFile } from '../utils/index';
 
-export const formatInput = (input: string): Array<string> => input.split('\n');
+export const formatInput = (input: string): Array<string> =>
+  input.split('\n').filter(Boolean);
 
 type TobboganSlope = {
   right: number;
