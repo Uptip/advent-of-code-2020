@@ -1,8 +1,18 @@
 import { loadFile } from '../utils/index';
 
-export const formatInput = (input: string): any => input.split('\n');
+export const formatInput = (input: string): Array<string> => input.split('\n');
 
-const getEncouteredTreesCount = ({ right, down, input }) => {
+type TobboganSlope = {
+  right: number;
+  down: number;
+  input: Array<string>;
+};
+
+const getEncouteredTreesCount = ({
+  right,
+  down,
+  input,
+}: TobboganSlope): number => {
   const size = input[0].length;
   let currentRow = 0;
   let currentColumn = 0;
@@ -17,19 +27,15 @@ const getEncouteredTreesCount = ({ right, down, input }) => {
   return viewedCells.filter(cell => cell === '#').length;
 };
 
-export const partOne = input => {
-  return getEncouteredTreesCount({ input, right: 3, down: 1 });
-};
+export const partOne = (input: Array<string>): number =>
+  getEncouteredTreesCount({ input, right: 3, down: 1 });
 
-export const partTwo = input => {
-  return (
-    getEncouteredTreesCount({ input, right: 1, down: 1 }) *
-    getEncouteredTreesCount({ input, right: 3, down: 1 }) *
-    getEncouteredTreesCount({ input, right: 5, down: 1 }) *
-    getEncouteredTreesCount({ input, right: 7, down: 1 }) *
-    getEncouteredTreesCount({ input, right: 1, down: 2 })
-  );
-};
+export const partTwo = (input: Array<string>): number =>
+  getEncouteredTreesCount({ input, right: 1, down: 1 }) *
+  getEncouteredTreesCount({ input, right: 3, down: 1 }) *
+  getEncouteredTreesCount({ input, right: 5, down: 1 }) *
+  getEncouteredTreesCount({ input, right: 7, down: 1 }) *
+  getEncouteredTreesCount({ input, right: 1, down: 2 });
 
 /* istanbul ignore next */
 if (process.env.NODE_ENV !== 'test') {
