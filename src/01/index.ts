@@ -1,4 +1,4 @@
-import { loadFile } from '../utils/index';
+import { run } from '../utils/index';
 
 export const formatInput = (input: string): Array<number> =>
   input.split('\n').filter(Boolean).map(Number);
@@ -30,25 +30,6 @@ export const partTwo = (input: Array<number>): number => {
   }
 };
 
-/* istanbul ignore next */
 if (process.env.NODE_ENV !== 'test') {
-  (async () => {
-    const fileContent = await loadFile('01/input.txt');
-    const input = formatInput(fileContent);
-
-    console.time('Total time');
-
-    console.time('Part one time');
-    console.log('Answer one is', partOne(input));
-    console.timeEnd('Part one time');
-
-    console.log('—');
-
-    console.time('Part two time');
-    console.log('Answer two is', partTwo(input));
-    console.timeEnd('Part two time');
-
-    console.log('—');
-    console.timeEnd('Total time');
-  })();
+  run({ pathToInput: '01/input.txt', partOne, partTwo, formatInput });
 }
