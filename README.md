@@ -1,6 +1,6 @@
 # 🎄 Advent of code 2020
 
-![check-code-coverage](https://img.shields.io/badge/code--coverage-100%25-brightgreen)
+[![Coverage Status](https://coveralls.io/repos/github/Uptip/advent-of-code-2020/badge.svg?branch=main)](https://coveralls.io/github/Uptip/advent-of-code-2020?branch=main)
 
 ## Completion
 
