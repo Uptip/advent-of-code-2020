@@ -71,52 +71,82 @@ test('gets correct part one sample answer', () => {
 });
 
 test('gets correct eye color validation results', () => {
-  const validEyeColors = ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'];
-  const invalidEyeColors = ['wll', 'wht'];
-  for (const validEyeColor of validEyeColors) {
-    expect(isValidEyeColor(validEyeColor)).toBe(true);
-  }
-  for (const invalidEyeColor of invalidEyeColors) {
-    expect(isValidEyeColor(invalidEyeColor)).toBe(false);
-  }
+  const testedEyeColors = [
+    { color: 'amb', expectedResult: true },
+    { color: 'blu', expectedResult: true },
+    { color: 'brn', expectedResult: true },
+    { color: 'gry', expectedResult: true },
+    { color: 'grn', expectedResult: true },
+    { color: 'hzl', expectedResult: true },
+    { color: 'oth', expectedResult: true },
+    { color: 'wll', expectedResult: false },
+    { color: 'why', expectedResult: false },
+  ];
+  testedEyeColors.forEach(({ color, expectedResult }) => {
+    expect(isValidEyeColor(color)).toBe(expectedResult);
+  });
 });
 
 test('gets correct height validation results', () => {
-  expect(isValidHeight('foobar')).toBe(false);
-  expect(isValidHeight('190')).toBe(false);
-  expect(isValidHeight('cm')).toBe(false);
-  expect(isValidHeight('in')).toBe(false);
-  expect(isValidHeight('58in')).toBe(false);
-  expect(isValidHeight('59in')).toBe(true);
-  expect(isValidHeight('76in')).toBe(true);
-  expect(isValidHeight('77in')).toBe(false);
-  expect(isValidHeight('149cm')).toBe(false);
-  expect(isValidHeight('150cm')).toBe(true);
-  expect(isValidHeight('193cm')).toBe(true);
-  expect(isValidHeight('194cm')).toBe(false);
+  const testedHeights = [
+    { height: 'foobar', expectedResult: false },
+    { height: '190', expectedResult: false },
+    { height: 'cm', expectedResult: false },
+    { height: 'in', expectedResult: false },
+    { height: '58in', expectedResult: false },
+    { height: '77in', expectedResult: false },
+    { height: '149cm', expectedResult: false },
+    { height: '194cm', expectedResult: false },
+    { height: '59in', expectedResult: true },
+    { height: '76in', expectedResult: true },
+    { height: '150cm', expectedResult: true },
+    { height: '193cm', expectedResult: true },
+  ];
+
+  testedHeights.forEach(({ height, expectedResult }) => {
+    expect(isValidHeight(height)).toBe(expectedResult);
+  });
 });
 
 test('gets correct year validation results', () => {
-  expect(isValidYear({ min: 1900, max: 2000 })(1950)).toBe(true);
-  expect(isValidYear({ min: 1960, max: 2000 })(1950)).toBe(false);
-  expect(isValidYear({ min: 1960, max: 2000 })(2020)).toBe(false);
-  expect(isValidYear({ min: 1960, max: 2000 })('aaaa')).toBe(false);
+  const testedYears = [
+    { min: 1900, max: 2000, year: 1950, expectedResult: true },
+    { min: 1960, max: 2000, year: 1950, expectedResult: false },
+    { min: 1960, max: 2000, year: 2020, expectedResult: false },
+    { min: 1960, max: 2000, year: 'aaaa', expectedResult: false },
+  ];
+
+  testedYears.forEach(({ min, max, year, expectedResult }) => {
+    expect(isValidYear({ min, max })(year)).toBe(expectedResult);
+  });
 });
 
 test('gets correct hex color validation results', () => {
-  expect(isValidHexColor('#bada55')).toBe(true);
-  expect(isValidHexColor('#badass')).toBe(false);
-  expect(isValidHexColor('#e91e63')).toBe(true);
-  expect(isValidHexColor('#000000')).toBe(true);
-  expect(isValidHexColor('#ffffff')).toBe(true);
+  const testedColors = [
+    { color: '#bada55', expectedResult: true },
+    { color: '#badass', expectedResult: false },
+    { color: '#e91e63', expectedResult: true },
+    { color: '#000000', expectedResult: true },
+    { color: '#ffffff', expectedResult: true },
+  ];
+
+  testedColors.forEach(({ color, expectedResult }) => {
+    expect(isValidHexColor(color)).toBe(expectedResult);
+  });
 });
 
 test('gets correct passport id validation results', () => {
-  expect(isValidPassportId('123456789')).toBe(true);
-  expect(isValidPassportId('1234567890')).toBe(false);
-  expect(isValidPassportId('00123456789')).toBe(false);
-  expect(isValidPassportId('12345678')).toBe(false);
-  expect(isValidPassportId('12345678a')).toBe(false);
+  const testedPassportIds = [
+    { passportId: '123456789', expectedResult: true },
+    { passportId: '1234567890', expectedResult: false },
+    { passportId: '00123456789', expectedResult: false },
+    { passportId: '12345678', expectedResult: false },
+    { passportId: '12345678a', expectedResult: false },
+  ];
+
+  testedPassportIds.forEach(({ passportId, expectedResult }) => {
+    expect(isValidPassportId(passportId)).toBe(expectedResult);
+  });
 });
 
 test('gets correct part two sample answer', () => {
