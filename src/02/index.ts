@@ -7,7 +7,7 @@ type Entry = {
   password: string;
 };
 
-export const formatInput = (input: string): Array<Entry> =>
+export const formatInput = (input: string): Entry[] =>
   input
     .split('\n')
     .filter(Boolean)
@@ -27,14 +27,14 @@ export const formatInput = (input: string): Array<Entry> =>
       };
     });
 
-export const partOne = (input: Array<Entry>): number =>
+export const partOne = (input: Entry[]): number =>
   input.filter(({ digitOne, digitTwo, letter, password }) => {
     const regEx = new RegExp(letter, 'gi');
     const occurencesCount = (password.match(regEx) || []).length;
     return occurencesCount >= digitOne && occurencesCount <= digitTwo;
   }).length;
 
-export const partTwo = (input: Array<Entry>): number =>
+export const partTwo = (input: Entry[]): number =>
   input.filter(({ digitOne, digitTwo, letter, password }) => {
     return (
       (password.charAt(digitOne - 1) === letter) !==

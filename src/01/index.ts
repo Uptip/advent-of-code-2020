@@ -1,9 +1,9 @@
 import { run } from '../utils/index';
 
-export const formatInput = (input: string): Array<number> =>
+export const formatInput = (input: string): number[] =>
   input.split('\n').filter(Boolean).map(Number);
 
-export const partOne = (input: Array<number>): number => {
+export const partOne = (input: number[]): number => {
   for (let i = 0; i < input.length; i++) {
     const one = input[i];
     for (let j = i + 1; j < input.length; j++) {
@@ -15,7 +15,7 @@ export const partOne = (input: Array<number>): number => {
   }
 };
 
-export const partTwo = (input: Array<number>): number => {
+export const partTwo = (input: number[]): number => {
   for (let i = 0; i < input.length; i++) {
     const one = input[i];
     for (let j = i + 1; j < input.length; j++) {

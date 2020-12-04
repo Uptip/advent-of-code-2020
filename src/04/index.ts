@@ -30,7 +30,7 @@ export const formatPassport = (input: string): Passport =>
       {},
     );
 
-export const formatInput = (input: string): Array<Passport> =>
+export const formatInput = (input: string): Passport[] =>
   input.split('\n\n').map(formatPassport);
 
 export const isValidYear = ({ min, max }): Function => (value: string) => {
@@ -97,10 +97,10 @@ export const isPassportValid = ({
   return true;
 };
 
-export const partOne = (input: Array<Passport>): number =>
+export const partOne = (input: Passport[]): number =>
   input.filter((passport: Passport) => isPassportValid({ passport })).length;
 
-export const partTwo = (input: Array<Passport>): number =>
+export const partTwo = (input: Passport[]): number =>
   input.filter((passport: Passport) =>
     isPassportValid({ passport, shallValidateFields: true }),
   ).length;

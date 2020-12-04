@@ -1,12 +1,12 @@
 import { run } from '../utils/index';
 
-export const formatInput = (input: string): Array<string> =>
+export const formatInput = (input: string): string[] =>
   input.split('\n').filter(Boolean);
 
 type TobboganSlope = {
   right: number;
   down: number;
-  input: Array<string>;
+  input: string[];
 };
 
 const getEncouteredTreesCount = ({
@@ -17,21 +17,21 @@ const getEncouteredTreesCount = ({
   const size = input[0].length;
   let currentRow = 0;
   let currentColumn = 0;
-  let viewedCells = [];
+  const visitedCells = [];
 
   while (currentRow < input.length) {
-    viewedCells.push(input[currentRow][currentColumn % size]);
+    visitedCells.push(input[currentRow][currentColumn % size]);
     currentRow += down;
     currentColumn += right;
   }
 
-  return viewedCells.filter(cell => cell === '#').length;
+  return visitedCells.filter(cell => cell === '#').length;
 };
 
-export const partOne = (input: Array<string>): number =>
+export const partOne = (input: string[]): number =>
   getEncouteredTreesCount({ input, right: 3, down: 1 });
 
-export const partTwo = (input: Array<string>): number =>
+export const partTwo = (input: string[]): number =>
   getEncouteredTreesCount({ input, right: 1, down: 1 }) *
   getEncouteredTreesCount({ input, right: 3, down: 1 }) *
   getEncouteredTreesCount({ input, right: 5, down: 1 }) *
