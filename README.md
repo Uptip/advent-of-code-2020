@@ -1,6 +1,6 @@
 # 🎄 Advent of code 2020
 
-![check-code-coverage](https://img.shields.io/badge/code--coverage-98.06%25-brightgreen)
+![check-code-coverage](https://img.shields.io/badge/code--coverage-100%25-brightgreen)
 
 ## Completion
 
