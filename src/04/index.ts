@@ -16,7 +16,7 @@ type PassportValidityInput = {
   shallValidateFields?: boolean;
 };
 
-const formatPassport = (input: string): Passport =>
+export const formatPassport = (input: string): Passport =>
   input
     .replace(/\s/gi, '\n')
     .split('\n')
@@ -33,7 +33,7 @@ const formatPassport = (input: string): Passport =>
 export const formatInput = (input: string): Array<Passport> =>
   input.split('\n\n').map(formatPassport);
 
-const isValidYear = ({ min, max }): Function => (value: string) => {
+export const isValidYear = ({ min, max }): Function => (value: string) => {
   const regex = /^\d{4}$/;
   if (!regex.test(value)) {
     return false;
@@ -41,7 +41,7 @@ const isValidYear = ({ min, max }): Function => (value: string) => {
   return Number(value) >= min && Number(value) <= max;
 };
 
-const isValidHeight = (value: string): boolean => {
+export const isValidHeight = (value: string): boolean => {
   if (value.includes('in')) {
     const parsedValue = Number(value.replace('in', ''));
     return parsedValue >= 59 && parsedValue <= 76;
@@ -53,17 +53,18 @@ const isValidHeight = (value: string): boolean => {
   return false;
 };
 
-const isValidHexColor = (value: string): boolean =>
+export const isValidHexColor = (value: string): boolean =>
   /^#[0-9a-f]{6}$/.test(value);
 
-const isValidEyeColor = (value: string): boolean =>
+export const isValidEyeColor = (value: string): boolean =>
   ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(value);
 
-const isValidPassportId = (value: string): boolean => /^\d{9}$/.test(value);
+export const isValidPassportId = (value: string): boolean =>
+  /^\d{9}$/.test(value);
 
-const requiredFields = ['iyr', 'hcl', 'byr', 'eyr', 'hgt', 'ecl', 'pid'];
+export const requiredFields = ['iyr', 'hcl', 'byr', 'eyr', 'hgt', 'ecl', 'pid'];
 
-const fieldsValidations = {
+export const fieldsValidations = {
   byr: isValidYear({ min: 1920, max: 2002 }),
   iyr: isValidYear({ min: 2010, max: 2020 }),
   eyr: isValidYear({ min: 2020, max: 2030 }),
@@ -73,9 +74,10 @@ const fieldsValidations = {
   pid: isValidPassportId,
 };
 
-const isFieldValid = ({ field, value }) => fieldsValidations[field](value);
+export const isFieldValid = ({ field, value }) =>
+  fieldsValidations[field](value);
 
-const isPassportValid = ({
+export const isPassportValid = ({
   passport,
   shallValidateFields,
 }: PassportValidityInput) => {
