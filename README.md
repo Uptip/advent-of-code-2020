@@ -1,6 +1,6 @@
 # 🎄 Advent of code 2020
 
-[![Coverage Status](https://coveralls.io/repos/github/Uptip/advent-of-code-2020/badge.svg?branch=main)](https://coveralls.io/github/Uptip/advent-of-code-2020?branch=main)
+[![Coverage Status](https://coveralls.io/repos/github/Uptip/advent-of-code-2020/badge.svg?branch=main)](https://coveralls.io/github/Uptip/advent-of-code-2020?branch=main) [![Maintainability](https://api.codeclimate.com/v1/badges/89605eabb750472e1b0d/maintainability)](https://codeclimate.com/github/Uptip/advent-of-code-2020/maintainability)
 
 ## Completion
 
