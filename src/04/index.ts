@@ -33,7 +33,7 @@ const formatPassport = (input: string): Passport =>
 export const formatInput = (input: string): Array<Passport> =>
   input.split('\n\n').map(formatPassport);
 
-const isValidYear = ({ value, min, max }): boolean => {
+const isValidYear = ({ min, max }): Function => (value: string) => {
   const regex = /^\d{4}$/;
   if (!regex.test(value)) {
     return false;
@@ -41,7 +41,7 @@ const isValidYear = ({ value, min, max }): boolean => {
   return Number(value) >= min && Number(value) <= max;
 };
 
-const isValidHeight = ({ value }): boolean => {
+const isValidHeight = (value: string): boolean => {
   if (value.includes('in')) {
     const parsedValue = Number(value.replace('in', ''));
     return parsedValue >= 59 && parsedValue <= 76;
@@ -53,23 +53,24 @@ const isValidHeight = ({ value }): boolean => {
   return false;
 };
 
-const isValidHexColor = ({ value }): boolean => /^#[0-9a-f]{6}$/.test(value);
+const isValidHexColor = (value: string): boolean =>
+  /^#[0-9a-f]{6}$/.test(value);
 
-const isValidEyeColor = ({ value }): boolean =>
+const isValidEyeColor = (value: string): boolean =>
   ['amb', 'blu', 'brn', 'gry', 'grn', 'hzl', 'oth'].includes(value);
 
-const isValidPassportId = ({ value }): boolean => /^\d{9}$/.test(value);
+const isValidPassportId = (value: string): boolean => /^\d{9}$/.test(value);
 
 const requiredFields = ['iyr', 'hcl', 'byr', 'eyr', 'hgt', 'ecl', 'pid'];
 
 const fieldsValidations = {
-  byr: (value: string) => isValidYear({ value, min: 1920, max: 2002 }),
-  iyr: (value: string) => isValidYear({ value, min: 2010, max: 2020 }),
-  eyr: (value: string) => isValidYear({ value, min: 2020, max: 2030 }),
-  hgt: (value: string) => isValidHeight({ value }),
-  hcl: (value: string) => isValidHexColor({ value }),
-  ecl: (value: string) => isValidEyeColor({ value }),
-  pid: (value: string) => isValidPassportId({ value }),
+  byr: isValidYear({ min: 1920, max: 2002 }),
+  iyr: isValidYear({ min: 2010, max: 2020 }),
+  eyr: isValidYear({ min: 2020, max: 2030 }),
+  hgt: isValidHeight,
+  hcl: isValidHexColor,
+  ecl: isValidEyeColor,
+  pid: isValidPassportId,
 };
 
 const isFieldValid = ({ field, value }) => fieldsValidations[field](value);
