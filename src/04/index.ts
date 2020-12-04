@@ -105,6 +105,7 @@ export const partTwo = (input: Passport[]): number =>
     isPassportValid({ passport, shallValidateFields: true }),
   ).length;
 
+/* istanbul ignore next */
 if (process.env.NODE_ENV !== 'test') {
   run({ pathToInput: '04/input.txt', partOne, partTwo, formatInput });
 }

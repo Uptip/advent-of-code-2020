@@ -42,6 +42,7 @@ export const partTwo = (input: Entry[]): number =>
     );
   }).length;
 
+/* istanbul ignore next */
 if (process.env.NODE_ENV !== 'test') {
   run({ pathToInput: '02/input.txt', partOne, partTwo, formatInput });
 }

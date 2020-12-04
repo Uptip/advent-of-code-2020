@@ -38,6 +38,7 @@ export const partTwo = (input: string[]): number =>
   getEncouteredTreesCount({ input, right: 7, down: 1 }) *
   getEncouteredTreesCount({ input, right: 1, down: 2 });
 
+/* istanbul ignore next */
 if (process.env.NODE_ENV !== 'test') {
   run({ pathToInput: '03/input.txt', partOne, partTwo, formatInput });
 }
