@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-export const loadFile = async fileName => {
+export const loadFile = async (fileName: string): Promise<string> => {
   try {
     const data = await fs.readFile(
       path.join(__dirname, '..', fileName),
@@ -10,6 +10,8 @@ export const loadFile = async fileName => {
     return data;
   } catch (err) {}
 };
+
+export const range = (size: number): number[] => [...Array(size).keys()];
 
 /* istanbul ignore next */
 export const run = async ({ pathToInput, formatInput, partOne, partTwo }) => {
