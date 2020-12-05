@@ -17,7 +17,7 @@ export const partOne = (input: number[]): number => Math.max(...input);
 export const partTwo = (input: number[]): number =>
   range(partOne(input)).find(
     id =>
-      input.includes(id) && input.includes(id - 1) && input.includes(id + 1),
+      !input.includes(id) && input.includes(id - 1) && input.includes(id + 1),
   );
 
 /* istanbul ignore next */
