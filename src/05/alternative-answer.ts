@@ -1,8 +1,5 @@
 import { run, range } from '../utils/index';
 
-const isInArray = (haystack: number[], needle: number): boolean =>
-  haystack.indexOf(needle) > -1;
-
 export const formatInput = (input: string): number[] =>
   input
     .split('\n')
@@ -20,9 +17,7 @@ export const partOne = (input: number[]): number => Math.max(...input);
 export const partTwo = (input: number[]): number =>
   range(partOne(input)).find(
     id =>
-      isInArray(input, id) &&
-      isInArray(input, id - 1) &&
-      isInArray(input, id + 1),
+      input.includes(id) && input.includes(id - 1) && input.includes(id + 1),
   );
 
 /* istanbul ignore next */
