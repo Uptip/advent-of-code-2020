@@ -1,5 +1,5 @@
 'use strict';
-import { loadFile } from './';
+import { loadFile } from '.';
 import path from 'path';
 
 jest.mock('fs');

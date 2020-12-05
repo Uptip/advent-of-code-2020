@@ -1,4 +1,4 @@
-import { formatInput, partOne } from './alternative-answer';
+import { formatInput, partOne } from './alternative-solution';
 
 const input = `BFFFBBFRRR
 FFFBBBFRRR

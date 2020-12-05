@@ -1,4 +1,4 @@
-import { formatInput, partOne, partTwo } from './';
+import { formatInput, partOne, partTwo } from '.';
 
 const input = `..##.......
 #...#...#..

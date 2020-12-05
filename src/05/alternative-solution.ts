@@ -21,6 +21,11 @@ export const partTwo = (input: number[]): number =>
   );
 
 /* istanbul ignore next */
-if (process.env.NODE_ENV !== 'test') {
-  run({ pathToInput: '05/input.txt', partOne, partTwo, formatInput });
-}
+export const runAlternative = (pathToInput: string): Promise<void> =>
+  run({
+    pathToInput,
+    partOne,
+    partTwo,
+    formatInput,
+    comment: 'alt',
+  });
