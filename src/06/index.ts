@@ -11,19 +11,19 @@ export const partOne = (input: string[][]): number =>
     .map(group => new Set(group.join('')).size)
     .reduce((total, current) => total + current, 0);
 
-export const partTwo = (input: string[][]): number => {
-  return input
-    .map(group => {
-      return new Set(
-        [...group.join('')].filter(
-          letter =>
-            group.join('').match(new RegExp(letter, 'g')).length ===
-            group.length,
-        ),
-      ).size;
-    })
+export const partTwo = (input: string[][]): number =>
+  input
+    .map(
+      group =>
+        new Set(
+          [...group.join('')].filter(
+            letter =>
+              group.join('').match(new RegExp(letter, 'g')).length ===
+              group.length,
+          ),
+        ).size,
+    )
     .reduce((total, current) => total + current, 0);
-};
 
 /* istanbul ignore next */
 if (process.env.NODE_ENV !== 'test') {
