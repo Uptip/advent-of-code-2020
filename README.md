@@ -1,6 +1,6 @@
 # 🎄 Advent of code 2020
 
-[![Coverage Status](https://coveralls.io/repos/github/Uptip/advent-of-code-2020/badge.svg?branch=main)](https://coveralls.io/github/Uptip/advent-of-code-2020?branch=main) [![Maintainability](https://api.codeclimate.com/v1/badges/89605eabb750472e1b0d/maintainability)](https://codeclimate.com/github/Uptip/advent-of-code-2020/maintainability)
+[![Coverage Status](https://coveralls.io/repos/github/Uptip/advent-of-code-2020/badge.svg?branch=main)](https://coveralls.io/github/Uptip/advent-of-code-2020?branch=main) [![Maintainability](https://api.codeclimate.com/v1/badges/89606eabb750472e1b0d/maintainability)](https://codeclimate.com/github/Uptip/advent-of-code-2020/maintainability)
 
 ## Completion
 
@@ -9,7 +9,7 @@
 [![Day 03](https://badgen.net/badge/03/%E2%98%85%E2%98%85/green)](https://github.com/Uptip/advent-of-code-2020/tree/main/src/03)
 [![Day 04](https://badgen.net/badge/04/%E2%98%85%E2%98%85/green)](https://github.com/Uptip/advent-of-code-2020/tree/main/src/04)
 [![Day 05](https://badgen.net/badge/05/%E2%98%85%E2%98%85/green)](https://github.com/Uptip/advent-of-code-2020/tree/main/src/05)
-![Day 06](https://badgen.net/badge/06/%E2%98%86%E2%98%86/gray)
+[![Day 06](https://badgen.net/badge/06/%E2%98%85%E2%98%85/green)](https://github.com/Uptip/advent-of-code-2020/tree/main/src/06)
 ![Day 07](https://badgen.net/badge/07/%E2%98%86%E2%98%86/grey)
 ![Day 08](https://badgen.net/badge/08/%E2%98%86%E2%98%86/gray)
 ![Day 09](https://badgen.net/badge/09/%E2%98%86%E2%98%86/grey)
