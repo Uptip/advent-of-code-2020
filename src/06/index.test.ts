@@ -18,17 +18,11 @@ b
 `;
 
 const formattedInput = [
-  `abc`,
-  `a
-b
-c`,
-  `ab
-ac`,
-  `a
-a
-a
-a`,
-  `b`,
+  ['abc'],
+  ['a', 'b', 'c'],
+  ['ab', 'ac'],
+  ['a', 'a', 'a', 'a'],
+  ['b'],
 ];
 
 test('formats input correctly', async () => {
