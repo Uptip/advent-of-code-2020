@@ -1,5 +1,11 @@
 import { run, range as times } from '../utils/index';
 
+type StateCalculationInput = {
+  input: string[][];
+  occupiedSeatsThreshold: number;
+  cellStateCalculationFunction: Function;
+};
+
 const range = (start: number, end: number): number[] =>
   Array.from({ length: end - start + 1 }, (_, i) => start + i);
 
@@ -36,7 +42,7 @@ const getVisibleSeats = ({ row, column, input }) => {
         slope,
       });
     } catch (err) {
-      return null;
+      return '.';
     }
   };
 
@@ -62,19 +68,22 @@ const getState = (cell: string): CellState => {
   }
 };
 
-const getNextCellState = ({ row, column, input, part }) => {
-  const cellStateFunction = part === 1 ? getAdjacentSeats : getVisibleSeats;
-  const occupiedSeatsThreshold = part === 1 ? 4 : 5;
-
+const getNextCellState = ({
+  row,
+  column,
+  input,
+  cellStateCalculationFunction,
+  occupiedSeatsThreshold,
+}) => {
   switch (getState(input[row][column])) {
     case CellState.Empty:
-      return !cellStateFunction({ row, column, input }).find(
+      return !cellStateCalculationFunction({ row, column, input }).find(
         cell => cell === '#',
       )
         ? '#'
         : 'L';
     case CellState.Occupied:
-      return cellStateFunction({ row, column, input }).filter(
+      return cellStateCalculationFunction({ row, column, input }).filter(
         cell => cell === '#',
       ).length >= occupiedSeatsThreshold
         ? 'L'
@@ -85,10 +94,20 @@ const getNextCellState = ({ row, column, input, part }) => {
   }
 };
 
-const getNextState = (input: string[][], part: number): string[][] =>
+const getNextState = ({
+  input,
+  occupiedSeatsThreshold,
+  cellStateCalculationFunction,
+}): string[][] =>
   times(input.length).map(row =>
     times(input[row].length).map(column =>
-      getNextCellState({ row, column, input, part }),
+      getNextCellState({
+        row,
+        column,
+        input,
+        occupiedSeatsThreshold,
+        cellStateCalculationFunction,
+      }),
     ),
   );
 
@@ -98,23 +117,44 @@ const flattenState = (input: string[][]): string =>
 const statesAreEqual = (a: string[][], b: string[][]): Boolean =>
   flattenState(a) === flattenState(b);
 
-const getStableStateOccupiedSeats = (
-  input: string[][],
-  part: number,
-): number => {
+const getStableStateOccupiedSeats = ({
+  input,
+  occupiedSeatsThreshold,
+  cellStateCalculationFunction,
+}: StateCalculationInput): number => {
   while (true) {
-    const nextInput = getNextState(input, part);
+    const nextInput = getNextState({
+      input,
+      occupiedSeatsThreshold,
+      cellStateCalculationFunction,
+    });
     if (statesAreEqual(input, nextInput)) break;
     input = nextInput;
   }
-  return (flattenState(getNextState(input, part)).match(/#/g) || []).length;
+  return (
+    flattenState(
+      getNextState({
+        input,
+        occupiedSeatsThreshold,
+        cellStateCalculationFunction,
+      }),
+    ).match(/#/g) || []
+  ).length;
 };
 
 export const partOne = (input: string[][]): number =>
-  getStableStateOccupiedSeats(input, 1);
+  getStableStateOccupiedSeats({
+    input,
+    occupiedSeatsThreshold: 4,
+    cellStateCalculationFunction: getAdjacentSeats,
+  });
 
 export const partTwo = (input: string[][]): any =>
-  getStableStateOccupiedSeats(input, 2);
+  getStableStateOccupiedSeats({
+    input,
+    occupiedSeatsThreshold: 5,
+    cellStateCalculationFunction: getVisibleSeats,
+  });
 
 /* istanbul ignore next */
 if (process.env.NODE_ENV !== 'test') {
